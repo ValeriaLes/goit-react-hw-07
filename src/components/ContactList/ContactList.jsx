@@ -7,6 +7,8 @@ export default function ContactList() {
 
   const filter = useSelector((state) => state.filters.name);
 
+  const error = useSelector((state) => state.contacts.error)
+
   const filteredContacts = contacts.filter((contact) => {
     return contact.name.toLowerCase().includes(filter.toLowerCase());
   });
@@ -22,6 +24,7 @@ export default function ContactList() {
           );
         })}
       </ul>
+      {error && <p>Contacts couldn't be loaded</p>}
     </>
   );
 }
